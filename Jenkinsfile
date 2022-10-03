@@ -4,10 +4,17 @@ pipeline {
         maven "MAVEN"
     }
     
+    environment {
+          string_name = 'backend'
+          version = 1.${random_num}
+          max = 10
+          random_num = "${Math.abs(new Random().nextInt(max+1))}"
+    }
+    
     stages {
         stage('Prepare Environment') {
             steps{
-                buildName "backend-1.0-${BUILD_TIMESTAMP}"
+                buildName "${string_name}-${version}-${BUILD_TIMESTAMP}"
             }
         }
         
