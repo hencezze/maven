@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    environment {
+          max = 10
+          rand = "${Math.abs(new Random().nextInt(max+1))}"
+    }
+    stages {
+        stage('RunTest?') {
+            steps {
+                script {
+                    echo "${rand}"
+                    if ("${rand}" == "7") {
+                        echo 'Success'
+                    } else {
+                        exit
+                    }
+                }
+            }
+        }
+    }
+}
