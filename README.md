@@ -4,6 +4,7 @@ This Jenkins build need plugins for correct work:
 2. Nexus Platform
 3. Build Timestamp
 4. Build Name and Description Setter
+#
 In Nexus, repository should will be name nexus
 IP-Adresses are static and was writed into docker-compose file
 Port-forwarding need for open UI in web on host
