@@ -4,6 +4,7 @@ This Jenkins build need plugins for correct work:
 2. Nexus Platform
 3. Build Timestamp
 4. Build Name and Description Setter
+5. Pipeline Utility Steps
 #
 In Nexus, repository should will be name nexus
 #
