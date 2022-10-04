@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    parameters {
+     booleanParam name: 'runTEST'   
+     }
     tools {
         maven "MAVEN"
     }
@@ -57,6 +60,17 @@ pipeline {
                             ]
                         );
                 }   }
+            }
+        }
+        stage('RunTest?') {
+            steps {
+                script {
+                    if (runTEST == 'true') {
+                        build job: 'test'
+                    } else {
+                        echo 'Boolean value is false'
+                    }
+                }
             }
         }
     }
