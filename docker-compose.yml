@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts-jdk11
+    container_name: jenk_main
+    ports:
+      - 8080:8080
+      - 50000:50000
+    networks:
+        host:
+           ipv4_address: 172.19.0.2
+    
+  nexus:
+    image: sonatype/nexus3
+    container_name: nexus
+    ports:
+      - 8081:8081
+    networks:
+        host:
+           ipv4_address: 172.19.0.3
+
+networks:
+  host:
+    driver: bridge
+    ipam:
+     driver: default
+     config:
+       - subnet: 172.19.0.0/24
