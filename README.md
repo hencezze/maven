@@ -7,9 +7,10 @@ This Jenkins build need plugins for correct work:
 #
 In Nexus, repository should will be name nexus
 #
-IP-Adresses are static and was writed into docker-compose file
-Port-forwarding need for open UI in web on host
-And other settings will be up, when I will have display how it works
+IP-Adresses are static and was writed into docker-compose file.
+Port-forwarding need for open UI in web on host.
+And other settings will be up, when I will have display how it works.
+Maven should be install first then other plugins before pipline starts
 #
 For correct work need to create two pipelines:
 1. backend, where java.app will have pull into Jenkins with dynamic name and start checking with Maven, when checking finished, our built artifact will upload in Nexus repository
