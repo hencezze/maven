@@ -1,4 +1,4 @@
-# maven-simple-project
+# Maven+Java+Jenkins
 This Jenkins build need plugins for correct work:
 1. Nexus Artifact Uploader
 2. Nexus Platform
