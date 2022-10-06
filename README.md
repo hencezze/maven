@@ -1,5 +1,5 @@
 # Maven+Java+Jenkins
-This Jenkins build need plugins for correct work:
+This Jenkins build needs many plugins for correct work:
 1. Nexus Artifact Uploader
 2. Nexus Platform
 3. Build Timestamp
