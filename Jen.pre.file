@@ -1,0 +1,52 @@
+pipeline {
+    agent { label 'slave' }
+    parameters {
+     booleanParam name: 'runTEST'   
+     }
+    
+    
+    stages {
+        stage('Prepare Environment') {
+            steps{
+                buildName "123"
+            }
+        }
+        
+        
+        stage('Prepare for maven and Nexus') {
+            steps{
+                sh "git clone https://github.com/hencezze/maven /workspace/backend/maven"
+                sh "mv -f /workspace/backend/maven/* /workspace/backend"
+            }
+        }
+        
+        stage('Build Maven') {
+            steps{
+                sh "mvn clean package"
+            }
+        }
+        stage('To nexus') {
+            steps{
+                sh "mvn deploy:deploy-file -DgroupId=innowise-group     -DartifactId=henceze-app     -Dversion=1.0     -Dpackaging=jar     -Dfile=/workspace/backend/target/henceze-app-1.0.jar     -DgeneratePom=true     -DrepositoryId=maven     -Durl=http://172.21.0.6:8081/repository/maven/"
+            }
+        }
+        
+        stage('Delete Artifact') {
+            steps{
+                sh "rm -Rfv /workspace/backend/*"
+            }
+        }
+        
+        stage('RunTest?') {
+            steps {
+                script {
+                    if (runTEST == 'true') {
+                        build job: 'test'
+                    } else {
+                        echo 'Boolean value is false'
+                    }
+                }
+            }
+        }
+    }
+}
