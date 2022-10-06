@@ -4,11 +4,16 @@ pipeline {
      booleanParam name: 'runTEST'   
      }
     
+    environment {
+          string_name = 'backend'
+          max = 10
+          rand = "${Math.abs(new Random().nextInt(max+1))}"
+     }
     
     stages {
-        stage('Prepare Environment') {
+        stage('Prepare Job Name') {
             steps{
-                buildName "123"
+                buildName "${string_name}-1.${rand}-${BUILD_TIMESTAMP}"
             }
         }
         
