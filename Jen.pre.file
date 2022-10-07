@@ -17,7 +17,11 @@ pipeline {
             }
         }
         
-        
+        stage('Add git repo') {
+            steps{
+                git branch: 'main', credentialsId: 'inn', url: 'https://gitlab-trainee.inno.ws/jenkins-moodle-course/maven-simple-project.git'
+            }
+        }
         
         stage('Build Maven') {
             steps{
