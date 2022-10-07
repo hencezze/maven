@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'test' }
     environment {
           max = 10
           rand = "${Math.abs(new Random().nextInt(max+1))}"
